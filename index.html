@@ -17,6 +17,16 @@
       padding: 20px;
       text-align: center;
     }
+    .language-toggle {
+      margin-top: 10px;
+    }
+    .language-toggle a {
+      color: #ffffff;
+      text-decoration: underline;
+      margin: 0 10px;
+      font-size: 0.9em;
+      cursor: pointer; /* 添加光标指针以指示可点击 */
+    }
     .container {
       max-width: 900px;
       margin: 40px auto;
@@ -38,42 +48,82 @@
     .time {
       font-weight: bold;
     }
+    /* 默认隐藏中文内容 */
+    .zh-only {
+        display: none;
+    }
+    iframe {
+      width: 100%;
+      height: 400px;
+      border: none;
+      margin: 20px 0;
+    }
   </style>
 </head>
 <body>
   <header>
-    <h1>🌉 Sydney Harbour Bridge Walk Itinerary</h1>
+    <!-- 页面标题也支持语言切换 -->
+    <h1><span class="en-only">🌉 Sydney Harbour Bridge Walk Itinerary</span><span class="zh-only">🌉 悉尼海港大桥步行行程</span></h1>
+    <div class="language-toggle">
+      <!-- 语言切换链接保持可见，并调用JavaScript函数 -->
+      <a onclick="setLanguage('en')">English Version</a> | <a onclick="setLanguage('zh')">中文版</a>
+    </div>
   </header>
 
   <div class="container">
-    <h2>🕘 Timeline</h2>
+    <h2><span class="en-only">🕘 Timeline</span><span class="zh-only">🕘 行程时间表</span></h2>
     <ul>
-      <li><span class="time">11:00 AM</span> – Arrive at Milsons Point (Recommended: T1 Line to Milsons Point Station)<br><span class="zh">到达 Milsons Point 火车站 （建议乘坐T1火车线）</span></li>
-      <li><span class="time">11:15 AM</span> – Walk to Lavender Bay via <a href="https://maps.app.goo.gl/9a9qMxsUKfWKDfr96" target="_blank">Bradfield Park</a><br><span class="zh">漫步至 Lavender Bay（穿越 Bradfield 公园）</span></li>
-      <li><strong>Optional:</strong> Visit <a href="https://www.northsydney.nsw.gov.au/events/event/64/kirribilli-art-design-and-fashion-market" target="_blank">Kirribilli Markets</a> (Usually open on Saturday or Sunday — check dates before visit. Located between Milsons Point Station and Bradfield Park)<br><span class="zh">（可选）游览 Kirribilli 市集（通常开放时间为周六或周日，建议提前查好日期。市集位于 Milsons Point 火车站和 Bradfield 公园之间）</span></li>
-      <li><span class="time">11:30 AM</span> – Rest and enjoy the view at Lavender Bay<br><span class="zh">在 Lavender Bay 稍作停留，欣赏海湾风景</span></li>
-      <li><span class="time">12:00 PM</span> – Explore <a href="https://maps.app.goo.gl/ZhQTA13dtnhsnfhF9" target="_blank">Wendy’s Secret Garden</a> 🌿 (~30 mins)<br><span class="zh">探索 Wendy 的秘密花园（约 30 分钟）</span></li>
-      <li><span class="time">12:30 PM</span> – Return to <a href="https://maps.app.goo.gl/5NeG92DbPnp9no8V6" target="_blank">Milsons Point Elevator (Northern Side)</a> and prepare to cross the bridge<br><span class="zh">返回 Milsons Point，准备跨桥</span></li>
-      <li><span class="time">12:45 PM</span> – Start walking across Sydney Harbour Bridge 🚤<br><span class="zh">开始步行跨越悉尼港大桥 🚤</span></li>
-      <li><span class="time">1:15 PM</span> – Arrive at <a href="https://www.pylonlookout.com.au/">Pylon Lookout</a> on the bridge ($29.90 entry) 🌍<br><span class="zh">抵达 Pylon Lookout（位于大桥上，门票 $29.90）</span></li>
-      <li><span class="time">2:00 PM</span> – Continue to Circular Quay via The Rocks and stroll to George St<br><span class="zh">继续前往 Circular Quay，并沿 George St 散步</span></li>
+      <li><span class="time">11:00 AM</span> – <span class="en-only">Arrive at Milsons Point (Recommended: T1 Line to Milsons Point Station)</span><span class="zh-only">到达 Milsons Point 火车站 （建议乘坐T1火车线）</span></li>
+      <li><span class="time">11:15 AM</span> – <span class="en-only">Walk to Lavender Bay via <a href="https://maps.app.goo.gl/9a9qMxsUKfWKDfr96" target="_blank">Bradfield Park</a></span><span class="zh-only">漫步至 Lavender Bay（穿越 <a href="https://maps.app.goo.gl/9a9qMxsUKfWKDfr96" target="_blank">Bradfield 公园</a>）</span></li>
+      <li><strong>Optional:</strong> <span class="en-only">Visit <a href="https://www.northsydney.nsw.gov.au/events/event/64/kirribilli-art-design-and-fashion-market" target="_blank">Kirribilli Markets</a> (Usually open on Saturday or Sunday — check dates before visit. Located between Milsons Point Station and Bradfield Park)</span><span class="zh-only">（可选）游览 <a href="https://www.northsydney.nsw.gov.au/events/event/64/kirribilli-art-design-and-fashion-market" target="_blank">Kirribilli 市集</a>（通常开放时间为周六或周日，建议提前查好日期。市集位于 Milsons Point 火车站和 Bradfield 公园之间）</span></li>
+      <li><span class="time">11:30 AM</span> – <span class="en-only">Rest and enjoy the view at Lavender Bay</span><span class="zh-only">在 Lavender Bay 稍作停留，欣赏海湾风景</span></li>
+      <li><span class="time">12:00 PM</span> – <span class="en-only">Explore <a href="https://maps.app.goo.gl/ZhQTA13dtnhsnfhF9" target="_blank">Wendy’s Secret Garden</a> 🌿 (~30 mins)</span><span class="zh-only">探索 <a href="https://maps.app.goo.gl/ZhQTA13dtnhsnfhF9" target="_blank">Wendy 的秘密花园</a>（约 30 分钟）</span></li>
+      <li><span class="time">12:30 PM</span> – <span class="en-only">Return to <a href="https://maps.app.goo.gl/5NeG92DbPnp9no8V6" target="_blank">Milsons Point Elevator (Northern Side)</a> and prepare to cross the bridge</span><span class="zh-only">返回 <a href="https://maps.app.goo.gl/5NeG92DbPnp9no8V6" target="_blank">Milsons Point</a>，准备跨桥</span></li>
+      <li><span class="time">12:45 PM</span> – <span class="en-only">Start walking across Sydney Harbour Bridge 🚤</span><span class="zh-only">开始步行跨越悉尼港大桥 🚤</span></li>
+      <li><span class="time">1:15 PM</span> – <span class="en-only">Arrive at <a href="https://www.pylonlookout.com.au/" target="_blank">Pylon Lookout</a> on the bridge ($29.90 entry) 🌍</span><span class="zh-only">抵达 <a href="https://www.pylonlookout.com.au/" target="_blank">Pylon Lookout</a>（位于大桥上，门票 $29.90）</span></li>
+      <li><span class="time">2:00 PM</span> – <span class="en-only">Continue to Circular Quay via The Rocks and stroll to George St</span><span class="zh-only">继续前往 Circular Quay，并沿 George St 散步</span></li>
     </ul>
 
-    <h2>📌 Highlights</h2>
+    <h2><span class="en-only">📌 Highlights</span><span class="zh-only">📌 亮点</span></h2>
     <ul>
-      <li>🌉 Sydney Harbour Bridge Walk – 1.5km across the iconic bridge<br><span class="zh">漫步悉尼港大桥，全线 1.5 公里</span></li>
-      <li>🔭 Pylon Lookout – panoramic views from the bridge tower<br><span class="zh">Pylon 观景台，窗口观看海湾景色</span></li>
-      <li>🌿 Lavender Bay – peaceful greenery and secret gardens<br><span class="zh">Lavender Bay 美丽海湾、秘密花园</span></li>
-      <li>📢 Kirribilli Markets – optional stop for local crafts & food<br><span class="zh">Kirribilli 市集，展售本地手工艺品和美食</span></li>
+      <li><span class="en-only">🌉 Sydney Harbour Bridge Walk – 1.5km across the iconic bridge</span><span class="zh-only">漫步悉尼港大桥，全线 1.5 公里</span></li>
+      <li><span class="en-only">🔭 Pylon Lookout – panoramic views from the bridge tower</span><span class="zh-only">Pylon 观景台，窗口观看海湾景色</span></li>
+      <li><span class="en-only">🌿 Lavender Bay – peaceful greenery and secret gardens</span><span class="zh-only">Lavender Bay 美丽海湾、秘密花园</span></li>
+      <li><span class="en-only">📢 Kirribilli Markets – optional stop for local crafts & food</span><span class="zh-only">Kirribilli 市集，展售本地手工艺品和美食</span></li>
     </ul>
 
-    <h2>🎒 What to Bring</h2>
+    <h2><span class="en-only">🎒 What to Bring</span><span class="zh-only">🎒 建议携带</span></h2>
     <ul>
-      <li>🧂 Hat & sunscreen (for sunny weather)<br><span class="zh">帽子和防晒霜（如今天晴）</span></li>
-      <li>🥤 Water bottle<br><span class="zh">水壶</span></li>
-      <li>📸 Camera or phone<br><span class="zh">相机或手机</span></li>
-      <li>👟 Comfortable walking shoes<br><span class="zh">舒适的步行鞋</span></li>
+      <li><span class="en-only">🧂 Hat & sunscreen (for sunny weather)</span><span class="zh-only">帽子和防晒霜（如今天晴）</span></li>
+      <li><span class="en-only">🥤 Water bottle</span><span class="zh-only">水壶</span></li>
+      <li><span class="en-only">📸 Camera or phone</span><span class="zh-only">相机或手机</span></li>
+      <li><span class="en-only">👟 Comfortable walking shoes</span><span class="zh-only">舒适的步行鞋</span></li>
     </ul>
   </div>
+
+  <script>
+    // setLanguage 函数用于根据传入的语言参数显示或隐藏对应的内容
+    function setLanguage(lang) {
+      // 获取所有带有 'en-only' 类的元素（英文内容）
+      const enElements = document.querySelectorAll('.en-only');
+      // 获取所有带有 'zh-only' 类的元素（中文内容）
+      const zhElements = document.querySelectorAll('.zh-only');
+
+      if (lang === 'en') {
+        // 如果选择英文，则显示英文内容，隐藏中文内容
+        enElements.forEach(el => el.style.display = 'inline'); // 使用 'inline' 保持文本流
+        zhElements.forEach(el => el.style.display = 'none');
+      } else if (lang === 'zh') {
+        // 如果选择中文，则显示中文内容，隐藏英文内容
+        enElements.forEach(el => el.style.display = 'none');
+        zhElements.forEach(el => el.style.display = 'inline'); // 使用 'inline' 保持文本流
+      }
+    }
+
+    // 当页面内容加载完毕时，默认显示英文版
+    document.addEventListener('DOMContentLoaded', () => {
+      setLanguage('en');
+    });
+  </script>
 </body>
 </html>
